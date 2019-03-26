@@ -1,0 +1,99 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - HexColors (2.2.1)
+  - IQKeyboardManager (6.2.0)
+  - JGProgressHUD (2.0.3)
+  - JPFPSStatus (0.1.1)
+  - MJExtension (3.0.15.1)
+  - MJRefresh (3.1.15.7)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
+  - SVProgressHUD (2.2.5)
+  - TSMessages (0.9.12):
+    - HexColors (~> 2.2.0)
+  - UICKeyChainStore (2.1.2)
+  - WHC_AutoLayoutKit (2.8.4):
+    - WHC_AutoLayoutKit/AutoCellHeight (= 2.8.4)
+    - WHC_AutoLayoutKit/Frame (= 2.8.4)
+    - WHC_AutoLayoutKit/LayoutGuide (= 2.8.4)
+    - WHC_AutoLayoutKit/LayoutView (= 2.8.4)
+    - WHC_AutoLayoutKit/StackView (= 2.8.4)
+    - WHC_AutoLayoutKit/Util (= 2.8.4)
+  - WHC_AutoLayoutKit/AutoCellHeight (2.8.4):
+    - WHC_AutoLayoutKit/LayoutView
+    - WHC_AutoLayoutKit/Util
+  - WHC_AutoLayoutKit/Frame (2.8.4):
+    - WHC_AutoLayoutKit/Util
+  - WHC_AutoLayoutKit/LayoutGuide (2.8.4):
+    - WHC_AutoLayoutKit/Util
+  - WHC_AutoLayoutKit/LayoutView (2.8.4):
+    - WHC_AutoLayoutKit/Util
+  - WHC_AutoLayoutKit/StackView (2.8.4):
+    - WHC_AutoLayoutKit/Frame
+    - WHC_AutoLayoutKit/LayoutView
+  - WHC_AutoLayoutKit/Util (2.8.4)
+  - YYText (1.0.7)
+
+DEPENDENCIES:
+  - AFNetworking
+  - IQKeyboardManager
+  - JGProgressHUD
+  - JPFPSStatus
+  - MJExtension
+  - MJRefresh
+  - SDWebImage
+  - SVProgressHUD
+  - TSMessages
+  - UICKeyChainStore
+  - WHC_AutoLayoutKit
+  - YYText
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - HexColors
+    - IQKeyboardManager
+    - JGProgressHUD
+    - JPFPSStatus
+    - MJExtension
+    - MJRefresh
+    - SDWebImage
+    - SVProgressHUD
+    - TSMessages
+    - UICKeyChainStore
+    - WHC_AutoLayoutKit
+    - YYText
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  JPFPSStatus: 03f32aa3d4d7d0c5bf56f6f3e7cf8b7280a5f52c
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
+  UICKeyChainStore: 85db518bb1d294366d15ec9b92a416c4e670518f
+  WHC_AutoLayoutKit: 2f36fa6a92f0f46783486c4dee630aae7e1777bb
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
+
+PODFILE CHECKSUM: 872625b62380396e582f39bc07fb7d1004ff6b5e
+
+COCOAPODS: 1.6.1

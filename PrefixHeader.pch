@@ -1,0 +1,82 @@
+//
+//  PrefixHeader.pch
+//  Loan
+//
+//  Created by tangfeimu on 2019/3/6.
+//  Copyright © 2019 tangfeimu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <Foundation/Foundation.h>
+
+#define WEAK_SELF(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+#ifdef DEBUG
+#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#else
+#define prinft(format, ...)
+#endif
+
+#pragma mark - 屏幕大小细线宽度 -- iOS11
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define LineHeight  (1 / [UIScreen mainScreen].scale)
+#define iOS_11 @available(iOS 11.0,*)
+#define NavigationHeight ((ScreenHeight >=  812) ? 88 : 64)
+#define StatusBarHeight  (ScreenHeight >= 812 ? 44.f : 20.f)
+#define ScaleWidth ScreenWidth / 375
+#define ScaleHeight ScreenHeight / 667
+
+
+#define URLS @"http://192.168.112.232/index.php"   //测试
+#define URL @"http://api.ke1.yuyanxt.com/index.php"
+
+#define VersionAPI [NSString stringWithFormat:@"%@/v1/site/app-version",URL] //版本号
+
+#define LoginAPI [NSString stringWithFormat:@"%@/v1/login",URL]
+#define CodeAPI  [NSString stringWithFormat:@"%@/v1/register/vercode",URL]
+#define RegisterAPI [NSString stringWithFormat:@"%@/v1/register",URL]
+#define RestCodeAPI [NSString stringWithFormat:@"%@/v1/reset-password/vercode",URL]
+#define ResetPwdAPI [NSString stringWithFormat:@"%@/v1/reset-password",URL]
+
+#define HomeAPI [NSString stringWithFormat:@"%@/v1/market",URL]
+
+#define RankAPI  [NSString stringWithFormat:@"%@/v1/market/rank",URL]  //行情
+
+#define AnalysisAPI [NSString stringWithFormat:@"%@/v1/market/analysis",URL]  //分析
+
+#define NewsAPI [NSString stringWithFormat:@"%@/v1/site/news",URL] //快讯
+
+
+#define QuestionAPI [NSString stringWithFormat:@"%@/v1/question",URL] //趣味答题列表
+#define ResultBackAPI [NSString stringWithFormat:@"%@/v1/question/result-callback",URL] //答题结果反馈
+
+#pragma mark 我的
+#define AccountAPI  [NSString stringWithFormat:@"%@/v1/question/score-record",URL]
+#define FeedBackAPI [NSString stringWithFormat:@"%@/v1/user/feedback",URL]
+
+#define ApnAPI [NSString stringWithFormat:@"%@/v1/site/apns",URL]
+
+//自选
+#define AddAPI [NSString stringWithFormat:@"%@/v1/user/add-favo",URL]
+#define RemoveAPI [NSString stringWithFormat:@"%@/v1/user/remove-favo",URL]
+
+
+#pragma mark - 图片名称
+static NSString *Icon_Back = @"ic_arrow_white";
+
+#pragma mark - UITabBar title
+static NSString *HOME = @"首页";
+static NSString *NEWS = @"快讯";
+static NSString *MARKET = @"行情";
+static NSString *ANALYS = @"分析";
+static NSString *MINE = @"我的";
+
+
+#import "NetworkSingleton.h"
+#import "ErrorView.h"
+#import "Tools.h"
+
+#endif /* PrefixHeader_pch */
