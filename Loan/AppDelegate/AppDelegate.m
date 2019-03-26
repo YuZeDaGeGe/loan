@@ -48,7 +48,7 @@
     is_first = YES;
     
 //    [NetworkSingleton new];
-    [self etWorkChangeEvent];
+    [self netWorkChangeEvent];
 
     HomeViewController *home = [[HomeViewController alloc] init];
     self.window.rootViewController = home;
@@ -226,7 +226,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 }
 
 #pragma mark 网络监听
-- (void)etWorkChangeEvent{
+- (void)netWorkChangeEvent{
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager startMonitoring]; //开启网络监控
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
