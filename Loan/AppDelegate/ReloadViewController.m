@@ -72,6 +72,7 @@
 - (void)getUrl{
     [AllRequest requestFromNet:VersionAPI params:nil succ:^(NSDictionary *data) {
         if ([data[@"status"] isEqualToString:@"success"]) {
+            self.url = data[@"data"][@"link"];
             [self startLoad:data[@"data"][@"link"]];
         }
     } fault:^(NSError *error) {
@@ -81,9 +82,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self getUrl];
-    NSLog(@"%@",self.url);
+    if ([self.url length] == 0) {
+         [self getUrl];
+    }else{
+         [self startLoad:self.url];
+    }
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Splash screen"]];
     
@@ -113,15 +116,11 @@
     //网络状态监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifi:) name:AFNetworkingReachabilityDidChangeNotification object:nil];
     
-    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"afnStatus"] isEqualToString:@"noAfn"]) {
-        NSLog(@"------");
-    }
-    
 }
 
 - (void)notifi:(NSNotification *)noti{
     NSLog(@"=======%@",noti);
-    [self startLoad:@"http://baidu.com/"];
+    [self startLoad:self.url];
 }
 
 
