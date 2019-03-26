@@ -154,6 +154,9 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"identifier:%@",identifier] type:TSMessageNotificationTypeMessage];
+      int num = [[badge stringValue] intValue];
+        num ++;
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:@(num)];//清除角标
 //        NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
     }
     else {
@@ -178,10 +181,15 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
         NSString *subtitle = content.subtitle;  // 推送消息的副标题
         NSString *title = content.title;  // 推送消息的标题
         
+        int i = [[badge stringValue] intValue] ;
+        i --;
+        if(i < 0){
+            i = 0;
+        }
         if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             
             NSString *url = content.userInfo[@"aps"][@"alert"][@"userInfo"][@"url"];
-            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];//清除角标
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:@(i)];//清除角标
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
                  ReloadViewController *custom = [[ReloadViewController alloc] init];
                  self.window.rootViewController = custom;
