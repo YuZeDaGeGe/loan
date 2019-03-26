@@ -28,6 +28,7 @@
 
 {
     BOOL is_first; //是否是首次进入
+    NSData *apns_token; //设备token
 }
 
 @end
@@ -123,7 +124,8 @@
 #pragma mark 获取token
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"===========%@",deviceToken);
+    self->apns_token = deviceToken;
+//    NSLog(@"===========%@",deviceToken);
 //    NSString *str = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
     NSDictionary *dic = @{@"apns_token":[NSString stringWithFormat:@"%@",deviceToken]};
     
@@ -152,17 +154,19 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSString *subtitle = content.subtitle;  // 推送消息的副标题
     NSString *title = content.title;  // 推送消息的标题
     
-    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"identifier:%@",identifier] type:TSMessageNotificationTypeMessage];
-      int num = [[badge stringValue] intValue];
-        num ++;
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:@(num)];//清除角标
-//        NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
-    }
-    else {
-        // 判断为本地通知
-        NSLog(@"iOS10 前台收到本地通知:{\\\\nbody:%@，\\\\ntitle:%@,\\\\nsubtitle:%@,\\\\nbadge：%@，\\\\nsound：%@，\\\\nuserInfo：%@\\\\n}",body,title,subtitle,badge,sound,userInfo);
-    }
+    
+//    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+//        [TSMessage showNotificationWithTitle:[NSString stringWithFormat:@"identifier:%@",identifier] type:TSMessageNotificationTypeMessage];
+//      int num = [[badge stringValue] intValue];
+//        num ++;
+//        NSLog(@"=======%d,============%@",num,badge);
+//        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:num];//清除角标
+////        NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
+//    }
+//    else {
+//        // 判断为本地通知
+//        NSLog(@"iOS10 前台收到本地通知:{\\\\nbody:%@，\\\\ntitle:%@,\\\\nsubtitle:%@,\\\\nbadge：%@，\\\\nsound：%@，\\\\nuserInfo：%@\\\\n}",body,title,subtitle,badge,sound,userInfo);
+//    }
     completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 }
 
@@ -181,15 +185,13 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
         NSString *subtitle = content.subtitle;  // 推送消息的副标题
         NSString *title = content.title;  // 推送消息的标题
         
-        int i = [[badge stringValue] intValue] ;
-        i --;
-        if(i < 0){
-            i = 0;
-        }
+        [self setNumNoRead];
+        
+    
         if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
             
             NSString *url = content.userInfo[@"aps"][@"alert"][@"userInfo"][@"url"];
-            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:@(i)];//清除角标
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];//清除角标
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
                  ReloadViewController *custom = [[ReloadViewController alloc] init];
                  self.window.rootViewController = custom;
@@ -201,7 +203,15 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     completionHandler();  // 系统要求执行这个方法
 }
 
+- (void)setNumNoRead{
+    [AllRequest requestFromNet:ApnsReadAPI params:@{@"apns_token": [NSString stringWithFormat:@"%@",self->apns_token],@"method":@"-0"} succ:^(NSDictionary *data) {
+    } fault:^(NSError *error) {
+        
+    }];
+}
+
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    [self setNumNoRead];
     [application setApplicationIconBadgeNumber:0];   //清除角标
     [application cancelAllLocalNotifications];
 }

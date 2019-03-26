@@ -82,11 +82,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([self.url length] == 0) {
+//    if ([self.url length] == 0) {
+//         [self getUrl];
+//    }else{
          [self getUrl];
-    }else{
-         [self startLoad:self.url];
-    }
+//    }
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Splash screen"]];
     

@@ -63,6 +63,9 @@
 #define AddAPI [NSString stringWithFormat:@"%@/v1/user/add-favo",URL]
 #define RemoveAPI [NSString stringWithFormat:@"%@/v1/user/remove-favo",URL]
 
+//app未读消息条数
+#define ApnsReadAPI [NSString stringWithFormat:@"%@/v1/site/apns-to-readed",URL]
+
 
 #pragma mark - 图片名称
 static NSString *Icon_Back = @"ic_arrow_white";
