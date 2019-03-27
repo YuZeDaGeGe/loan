@@ -100,12 +100,14 @@
 - (void)getContentFromNet{
     [AllRequest requestFromNet:VersionAPI params:nil succ:^(NSDictionary *data) {
          if ([data[@"status"] isEqualToString:@"success"]) {
-             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                 [self createAdvertise];
-                 self->_adver.title.text = data[@"data"][@"home_popup"][@"title"];
-                 self->_adver.contentLabel.text = data[@"data"][@"home_popup"][@"content"];
-                 self->_adver.backView.whc_Height(self->_adver.title.frame.size.height + self->_adver.contentLabel.frame.size.height + 180);
-             });
+             if ([data[@"data"][@"home_popup"][@"is_open"] isEqualToString:@"1"]) {
+                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                     [self createAdvertise];
+                     self->_adver.title.text = data[@"data"][@"home_popup"][@"title"];
+                     self->_adver.contentLabel.text = data[@"data"][@"home_popup"][@"content"];
+                     self->_adver.backView.whc_Height(self->_adver.title.frame.size.height + self->_adver.contentLabel.frame.size.height + 300);
+                 });
+             }
         }
     } fault:^(NSError *error) {
         

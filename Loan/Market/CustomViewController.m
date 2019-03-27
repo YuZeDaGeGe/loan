@@ -102,7 +102,7 @@
     if (!_changeBtn) {
         _changeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.view addSubview:_changeBtn];
-        _changeBtn.whc_RightSpace(10).whc_Width(80).whc_Height(40).whc_BottomSpace(50);
+        _changeBtn.whc_RightSpace(10).whc_Width(80).whc_Height(40).whc_BottomSpace(10);
         _changeBtn.backgroundColor = [UIColor secondMainColor];
         _changeBtn.alpha = 0.5;
         [_changeBtn setLayerCornerRadius:10];
