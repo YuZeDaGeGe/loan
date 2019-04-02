@@ -42,6 +42,7 @@
         _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth, ScreenHeight + 10) configuration:self.wkConfig];
         _wkWebView.navigationDelegate = self;
         _wkWebView.UIDelegate = self;
+        _wkWebView.scrollView.bounces = false;
         _wkWebView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:_wkWebView];
     }
