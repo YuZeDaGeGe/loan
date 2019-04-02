@@ -239,10 +239,9 @@
     HomeTypeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"type"];
     if (!cell) {
         cell = [[HomeTypeViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"type"];
-        HomeModel *model = self.arr[indexPath.row - 1];
-        [cell setValueForCell:model which:num];
     }
-    
+    HomeModel *model = self.arr[indexPath.row - 1];
+    [cell setValueForCell:model which:num];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

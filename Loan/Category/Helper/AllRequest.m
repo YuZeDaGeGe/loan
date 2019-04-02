@@ -39,7 +39,6 @@
 //行情
 + (void)requestForRank:(NSString *)url params:(NSDictionary *)params succ:(Success)succ fault:(Fault)fault;{
     [NetworkSingleton getWithURLString:url parameters:params success:^(NSDictionary *data) {
-//        NSLog(@"%@",data);
         NSArray *upArr= [HomeModel mj_objectArrayWithKeyValuesArray:data[@"data"][@"result_rise"]];
         NSArray *lowArr = [HomeModel mj_objectArrayWithKeyValuesArray:data[@"data"][@"result_fall"]];
         NSArray *favoArr = [HomeModel mj_objectArrayWithKeyValuesArray:data[@"data"][@"result_favo"]];
