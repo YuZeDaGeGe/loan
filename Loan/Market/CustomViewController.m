@@ -76,7 +76,6 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Splash screen"]];
     
-    self.navigationItem.title = @"详情";
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"back_black_icon"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(clickLeftBtn)];
     
@@ -93,9 +92,14 @@
     
 
         [self startLoad:self.url];
-    
+    if (![self.fromWhich isEqualToString:@"register"]) {
 #pragma mark 自选按钮
         [self createChange];
+        self.navigationItem.title = @"详情";
+    }else{
+        self.navigationItem.title = @"协议详情";
+    }
+
 }
 
 - (void)createChange{
@@ -168,7 +172,11 @@
 }
 
 - (void)clickLeftBtn{
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self.fromWhich isEqualToString:@"register"]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

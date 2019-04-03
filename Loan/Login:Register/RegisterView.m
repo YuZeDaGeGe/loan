@@ -90,6 +90,25 @@
                         _code.font = [UIFont systemFontOfSize:16];
                     }
                 }
+                if (j == 2) {
+                    if (!_tip) {
+                        _tip = [UILabel new];
+                        [self addSubview:_tip];
+                        _tip.whc_LeftSpace(54).whc_TopSpaceToView(5, _line);
+                        _tip.text = @"阅读并同意数字期货通";
+                        _tip.textColor = [UIColor colorWithHexString:@"#333333"];
+                        _tip.font = [UIFont systemFontOfSize:13];
+                    }
+                    if (!_url) {
+                        _url = [UILabel new];
+                        [self addSubview:_url];
+                        _url.whc_LeftSpaceToView(0, _tip).whc_TopSpaceToView(5, _line);
+                        _url.textColor = [UIColor colorWithHexString:@"#EB4B2B"];
+                        _url.text = @"注册相关协议";
+                        _url.userInteractionEnabled = YES;
+                        _url.font = [UIFont systemFontOfSize:13];
+                    }
+                }
             }
         }
         if (!_registerBtn) {
@@ -141,5 +160,7 @@
         [_delegate sendValueForRegister:dic];
     }
 }
+
+
 
 @end

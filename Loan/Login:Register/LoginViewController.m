@@ -17,6 +17,7 @@
 #import "UIColor+Category.h"
 #import "MainTabBarController.h"
 #import "Tools.h"
+#import "CustomViewController.h"
 
 @interface LoginViewController ()<LoginViewDelegate,RegisterViewDelegate>
 
@@ -58,6 +59,7 @@
     [_registe.close addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(close)]];
     [_registe.code addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(codeAction)]];
     [_registe.registe addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loginAction)]];
+     [_registe.url addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(urlAction)]];
 }
 
 #pragma mark loginDelegate
@@ -196,6 +198,14 @@
 #pragma mark
 - (void)close{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)urlAction{
+    CustomViewController *custom = [[CustomViewController alloc] init];
+    custom.url = @"http://protocol.yuyanxt.com/shuziqihuotong.html";
+    custom.fromWhich = @"register";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:custom];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end

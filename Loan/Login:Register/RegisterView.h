@@ -28,6 +28,9 @@ typedef void (^Value)(NSString *phone);
 @property (nonatomic,strong)UILabel *code;
 @property (nonatomic,strong)UIButton *registerBtn;
 
+@property (nonatomic,strong)UILabel *tip;
+@property (nonatomic,strong)UILabel *url;
+
 
 @property (nonatomic,strong)UIImageView *close;
 
