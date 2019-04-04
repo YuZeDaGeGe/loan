@@ -39,7 +39,11 @@
 
 - (WKWebView *)wkWebView {
     if (!_wkWebView) {
-        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth, ScreenHeight + 10) configuration:self.wkConfig];
+        if ([self.fromWhich isEqualToString:@"register"]) {
+             _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth, ScreenHeight - NavigationHeight) configuration:self.wkConfig];
+        }else{
+             _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NavigationHeight , ScreenWidth, ScreenHeight + 10) configuration:self.wkConfig];
+        }
         _wkWebView.navigationDelegate = self;
         _wkWebView.UIDelegate = self;
         _wkWebView.backgroundColor = [UIColor whiteColor];

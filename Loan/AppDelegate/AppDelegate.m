@@ -247,12 +247,11 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
                                                                                          message:@"您没有联网,请检查下网络"
                                                                                   preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    NSURL *url = [NSURL URLWithString:@"prefs:root=General"];
-                    if ([[UIApplication sharedApplication] canOpenURL:url])
-                    {
-                        [[UIApplication sharedApplication] openURL:url];
-                    }else{
-                        NSLog(@"can not open");
+                    if (@available(iOS 10.0, *)) {
+//                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"App-Prefs:root=WIFI"]];
+//                        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{UIApplicationOpenURLOptionUniversalLinksOnly:@"App-Prefs:root=WIFI"} completionHandler:^(BOOL success) { }];
+                    } else {
+                        // Fallback on earlier versions
                     }
                 }];
                 
