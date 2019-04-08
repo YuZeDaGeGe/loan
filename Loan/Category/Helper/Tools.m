@@ -95,13 +95,13 @@
                                                                              message:@"您没有联网,请检查下网络"
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSURL *url = [NSURL URLWithString:@"prefs:root=General"];
-        if ([[UIApplication sharedApplication] canOpenURL:url])
-        {
-            [[UIApplication sharedApplication] openURL:url];
-        }else{
-            NSLog(@"can not open");
-        }
+//        NSURL *url = [NSURL URLWithString:@"prefs:root=General"];
+//        if ([[UIApplication sharedApplication] canOpenURL:url])
+//        {
+//            [[UIApplication sharedApplication] openURL:url];
+//        }else{
+//            NSLog(@"can not open");
+//        }
     }];
     
     [alertController addAction:okAction];
