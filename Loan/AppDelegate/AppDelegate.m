@@ -171,7 +171,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 }
 
 // 通知的点击事件
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler API_AVAILABLE(ios(10.0)){
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler API_AVAILABLE(ios(10.0)){
     
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if (@available(iOS 10.0, *)) {
